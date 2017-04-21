@@ -1,0 +1,23 @@
+# let's provision to all hosts defined, no inventory and groups necessary
+- hosts: all
+  roles:
+    - ubuntu_default_locale
+    - ubuntu_common_utils
+    - ubuntu_devel_tools
+    - ubuntu_unattended_updates
+
+    - ubuntu_ufw
+    - ubuntu_fail2ban
+
+    - ubuntu_brightbox_ruby
+    - ubuntu_ruby_common_gem_dependencies
+
+    - ubuntu_mongodb
+
+    - ubuntu_redis
+
+    - role: setup_user
+      setup_user:
+        name: 'demo_production'
+        allowed_ssh_keys:
+          - https://github.com/gbrylinski.keys
